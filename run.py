@@ -11,7 +11,7 @@ out = eng.run_sldemo_enginewc()
 # convert matlab array to numpy array
 out = np.array(out)
 # plot the results
-plt.plot(out[:,0],out[:,1])
+plt.plot(out)
 plt.show()
 
 # close matlab engine

@@ -4,6 +4,7 @@ function output = run_sldemo_enginewc()
 
     % simulation parameters
     test_duration = 10;
+    dt = 0.001;
 
     % controller parameters
     Kp =0.0614;
@@ -28,14 +29,14 @@ function output = run_sldemo_enginewc()
     simIn = setVariable(simIn,'Kp',Kp,'Workspace',simlk_filename);
     simIn = setVariable(simIn,'Ki',Ki,'Workspace',simlk_filename);
     simIn = setVariable(simIn,'test_duration',test_duration,'Workspace',simlk_filename);
+    simIn = setVariable(simIn,'dt',dt,'Workspace',simlk_filename);
     simIn = setVariable(simIn,'speed_setpoint',speed_setpoint,'Workspace',simlk_filename);
     simIn = setVariable(simIn,'drag_torque_load',drag_torque_load,'Workspace',simlk_filename);
 
     % need to either send the variables as simulation input to the simulink
     % model or to change the scope of the simulink model to this function
     sim_output = sim(simIn);
-    speed_output = sim_output.speed_output.Data;
-    time_output = sim_output.speed_output.Time;
-    output = [time_output, speed_output];
+    speed_output = sim_output.speed_output;
+    output = speed_output;
 
 end

@@ -1,10 +1,14 @@
-function output = run_sldemo_enginewc()
+%{
+Inputs:
+     - test_duration: duration of simulation
+     - dt: sampling time of sim output (NOTE: Simulink uses a variable time step for the simulation)
+     - speed_setpoint: speed valus over time (two comlumns: time and values)
+     - drag_torque_load: load torque values over time (two comlumns: time and values)
+%}
+
+function output = run_sldemo_enginewc(test_duration,dt,speed_setpoint,drag_torque_load)
 
     simlk_filename = "sldemo_enginewc";
-
-    % simulation parameters
-    test_duration = 10;
-    dt = 0.001;
 
     % controller parameters
     Kp =0.0614;
@@ -12,17 +16,6 @@ function output = run_sldemo_enginewc()
     % Kp = [0.05 0.033 0.061];
     % Ki = [0.10 0.064 0.072];
 
-    speed_setpoint = [[0,2000];
-                      [4.99,2000];
-                      [5,3000]
-                      [10,3000]];
-
-    drag_torque_load = [[0,10];
-                        [3,10];
-                        [3.01,25];
-                        [7,25];
-                        [7.01,15];
-                        [10,15];];
 
     % create simulation input object and fill it with the needed values
     simIn = Simulink.SimulationInput(simlk_filename);

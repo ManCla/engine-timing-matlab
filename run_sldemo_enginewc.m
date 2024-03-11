@@ -16,6 +16,9 @@ function output = run_sldemo_enginewc(test_duration,dt,speed_setpoint,drag_torqu
     % Kp = [0.05 0.033 0.061];
     % Ki = [0.10 0.064 0.072];
 
+    time = 0:dt:test_duration;
+    speed_setpoint = [time;speed_setpoint]';
+    drag_torque_load = [time;drag_torque_load]';
 
     % create simulation input object and fill it with the needed values
     simIn = Simulink.SimulationInput(simlk_filename);

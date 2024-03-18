@@ -39,4 +39,4 @@ plt.show()
 
 # close matlab engine
 eng.quit()
-print(" -- Matlab Engine Quitted")
+print(" -- Matlab Engine Quit")
